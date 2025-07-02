@@ -1,107 +1,42 @@
-from dataclasses import dataclass, field
-from decimal import Decimal, getcontext
-import heapq
-
-getcontext().prec = 10
+import argparse
+from src.runner import KnapsackProblemRunner
 
 
-@dataclass(order=True)
-class Node:
-    priority: Decimal
-    level: int = field(compare=False)
-    value: Decimal = field(compare=False)
-    weight: Decimal = field(compare=False)
-    bound: Decimal
-    s: list = field(compare=False, default_factory=list)
+def parse_args():
+    parser = argparse.ArgumentParser(description="Process Knapsack Problem files.")
+    parser.add_argument(
+        "-p", "--process-folder", type=str, default="kp_instances/low-dimensional",
+        help="Folder containing files to process (default: kp_instances/low-dimensional)"
+    )
+    parser.add_argument(
+        "-o", "--processed-folder", type=str, default="kp_processed_instances/low-dimensional",
+        help="Folder to store processed files (default: kp_processed_instances/low-dimensional)"
+    )
+    parser.add_argument(
+        "-r", "--results-folder", type=str, default="kp_results/low-dimensional",
+        help="Folder to store results (default: kp_results/low-dimensional)"
+    )
+    parser.add_argument(
+        "-opt", "--optimal-folder", type=str, default="kp_instances/low-dimensional-optimum",
+        help="Path to the folder containing optimal values (default: kp_instances/low-dimensional-optimum)"
+    )
+    parser.add_argument(
+        "--move-back", action="store_true",
+        help="Move all files from processed folder back to process folder after processing"
+    )
+    return parser.parse_args()
 
+if __name__ == "__main__":
+    args = parse_args()
 
-def bnb_knapsack(items, W, n):
-    root = Node(
-        priority=0, 
-        level=0, 
-        value=0, 
-        weight=0, 
-        bound=W*items[0][2], 
-        s=[]
+    runner = KnapsackProblemRunner(
+        folder_to_process=args.process_folder,
+        processed_folder=args.processed_folder,
+        results_folder=args.results_folder,
+        optimal_folder=args.optimal_folder
     )
 
-    queue = []
-    heapq.heappush(queue, root)
+    runner.run_for_all_files()
 
-    best = 0
-
-    while queue:
-        node = heapq.heappop(queue)
-        if node.level == n-1:
-            if best < node.value:
-                best = node.value
-                sol = node.s
-                continue
-        elif node.bound > best:
-            with_node = (
-                node.value + items[node.level][1] + 
-                (W - node.weight - items[node.level][0])* 
-                items[node.level + 1][2]
-            )
-
-            wout_node = (
-                node.value + (W - node.weight)*items[node.level + 1][2]
-            )
-
-            if node.weight + items[node.level][0] <= W and with_node > best:
-                heapq.heappush(queue, 
-                    Node(
-                        priority=-with_node,
-                        level=node.level + 1, 
-                        value=node.value + items[node.level][1], 
-                        weight=node.weight + items[node.level][0], 
-                        bound=with_node, 
-                        s=node.s + [node.level]
-                    )
-                )
-            if wout_node > best:
-                heapq.heappush(queue, 
-                    Node(
-                        priority=-wout_node,
-                        level=node.level + 1,
-                        value=node.value,
-                        weight=node.weight,
-                        bound=wout_node,
-                        s=node.s
-                    )
-                )
-    return best, sol
-
-def read_knapsack_file(filepath):
-    with open(filepath, 'r') as f:
-        parts = f.readline().strip().split()
-        n = int(parts[0])
-        wmax = Decimal(parts[1])
-
-        items = []
-        for _ in range(n):
-            parts = f.readline().strip().split()
-            v = Decimal(parts[0])
-            w = Decimal(parts[1])
-            items.append((w, v, v/w))
-
-    return n, wmax, items
-
-# import sys
-
-# if len(sys.argv) < 2:
-#     print("Uso: python seu_script.py arquivo")
-#     sys.exit(1)
-
-# filename = sys.argv[1]
-
-# n, wmax, items = read_knapsack_file(filename)
-
-# items.sort(key=lambda x: x[2], reverse=True)
-# print("Itens: ", items)
-
-
-# best, sol = bnb_knapsack(items, wmax, n)
-
-# print("Melhor valor:", best)
-# print("Itens escolhidos (índices):", sol)
+    if args.move_back:
+        runner.move_back_processed_files()

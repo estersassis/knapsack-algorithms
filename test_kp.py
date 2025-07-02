@@ -1,9 +1,10 @@
 import os
 import math
-from main import read_knapsack_file, bnb_knapsack
+from src.kp_branch_and_bound import BranchAndBoundAlgorithm
+from src.kp import KnapsackProblem
 
-instances_dir = "instances_01_KP/low-dimensional"
-optimum_dir = "instances_01_KP/low-dimensional-optimum"
+instances_dir = "kp_instances/low-dimensional"
+optimum_dir = "kp_instances/low-dimensional-optimum"
 
 # lista de arquivos
 instance_files = sorted(os.listdir(instances_dir))
@@ -13,18 +14,20 @@ for inst_file in instance_files:
     optimum_path = os.path.join(optimum_dir, inst_file)
 
     # lê a instância
-    n, wmax, items = read_knapsack_file(instance_path)
-    items.sort(key=lambda x: x[2], reverse=True)
+    problem = KnapsackProblem(instance_path, optimum_path)
 
     # lê o ótimo
     with open(optimum_path) as f:
         expected = float(f.readline().strip())
 
     # roda o branch-and-bound
-    best, sol = bnb_knapsack(items, wmax, n)
+    alg = BranchAndBoundAlgorithm(
+        problem.n, problem.W, problem.items
+    )
+    alg.execute()
 
     # comparação
-    if math.isclose(best, expected, rel_tol=1e-5, abs_tol=1e-5):
-        print(f"[OK] {inst_file}: {best}")
+    if math.isclose(alg.best_value, expected, rel_tol=1e-5, abs_tol=1e-5):
+        print(f"[OK] {inst_file}: {alg.best_value}")
     else:
-        print(f"[ERRO] {inst_file}: obtido {best}, esperado {expected}")
+        print(f"[ERRO] {inst_file}: obtido {alg.best_value}, esperado {expected}")
