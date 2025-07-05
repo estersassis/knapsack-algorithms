@@ -37,7 +37,7 @@ class KnapsackProblemRunner:
             key=lambda x: int(os.path.splitext(x)[0].split("_")[-1])
         )
 
-        with ProcessPoolExecutor() as executor:
+        with ProcessPoolExecutor(max_workers=3) as executor:
             futures = {
                 executor.submit(self.process_file, file_name): file_name
                 for file_name in files

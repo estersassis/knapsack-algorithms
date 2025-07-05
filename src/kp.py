@@ -41,7 +41,7 @@ class KnapsackProblem:
         self.branch_and_bound_algorithm = BranchAndBoundAlgorithm(
             self.n, self.W, self.items
         )
-        epsilons = [0.1, 0.05, 0.01]
+        epsilons = [0.8, 0.5, 0.1]
         self.fptas_algorithms = {
             eps: FPTASAlgorithm(self.n, self.W, self.items, epsilon=eps)
             for eps in epsilons

@@ -5,20 +5,20 @@ from src.runner import KnapsackProblemRunner
 def parse_args():
     parser = argparse.ArgumentParser(description="Process Knapsack Problem files.")
     parser.add_argument(
-        "-p", "--process-folder", type=str, default="kp_instances/low-dimensional",
-        help="Folder containing files to process (default: kp_instances/low-dimensional)"
+        "-p", "--process-folder", type=str, default="kp_instances/large_scale",
+        help="Folder containing files to process (default: kp_instances/large_scale)"
     )
     parser.add_argument(
-        "-o", "--processed-folder", type=str, default="kp_processed_instances/low-dimensional",
-        help="Folder to store processed files (default: kp_processed_instances/low-dimensional)"
+        "-o", "--processed-folder", type=str, default="kp_processed_instances/large_scale",
+        help="Folder to store processed files (default: kp_processed_instances/large_scale)"
     )
     parser.add_argument(
-        "-r", "--results-folder", type=str, default="kp_results/low-dimensional",
-        help="Folder to store results (default: kp_results/low-dimensional)"
+        "-r", "--results-folder", type=str, default="kp_results/large_scale",
+        help="Folder to store results (default: kp_results/large_scale)"
     )
     parser.add_argument(
-        "-opt", "--optimal-folder", type=str, default="kp_instances/low-dimensional-optimum",
-        help="Path to the folder containing optimal values (default: kp_instances/low-dimensional-optimum)"
+        "-opt", "--optimal-folder", type=str, default="kp_instances/large_scale-optimum",
+        help="Path to the folder containing optimal values (default: kp_instances/large_scale-optimum)"
     )
     parser.add_argument(
         "--move-back", action="store_true",

@@ -2,27 +2,27 @@ Instance: f8_l-d_kp_23_10000
 
 --- Branch and Bound Algorithm ---
 Best Value: 9767.0000
-Execution Time: 22.6808 seconds
+Execution Time: 25.6479 seconds
 Memory Usage: 4464 bytes
 Relative Error: 0.0000
 
+--- FPTAS Algorithm (ε=0.8) ---
+Best Value: 9554.0870
+Execution Time: 0.0032 seconds
+Memory Usage: 13392 bytes
+Relative Error: 0.0218
+
+--- FPTAS Algorithm (ε=0.5) ---
+Best Value: 9618.0652
+Execution Time: 0.0052 seconds
+Memory Usage: 21408 bytes
+Relative Error: 0.0152
+
 --- FPTAS Algorithm (ε=0.1) ---
 Best Value: 9741.7565
-Execution Time: 0.0616 seconds
+Execution Time: 0.0496 seconds
 Memory Usage: 108384 bytes
 Relative Error: 0.0026
-
---- FPTAS Algorithm (ε=0.05) ---
-Best Value: 9754.5522
-Execution Time: 0.1436 seconds
-Memory Usage: 217008 bytes
-Relative Error: 0.0013
-
---- FPTAS Algorithm (ε=0.01) ---
-Best Value: 9764.3622
-Execution Time: 0.4445 seconds
-Memory Usage: 1086288 bytes
-Relative Error: 0.0003
 
 --- Two Approx Algorithm ---
 Best Value: 9751.0000

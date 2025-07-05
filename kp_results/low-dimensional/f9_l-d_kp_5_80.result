@@ -2,27 +2,27 @@ Instance: f9_l-d_kp_5_80
 
 --- Branch and Bound Algorithm ---
 Best Value: 130.0000
-Execution Time: 0.0005 seconds
+Execution Time: 0.0002 seconds
 Memory Usage: 144 bytes
 Relative Error: 0.0000
 
+--- FPTAS Algorithm (ε=0.8) ---
+Best Value: 124.3200
+Execution Time: 0.0001 seconds
+Memory Usage: 576 bytes
+Relative Error: 0.0437
+
+--- FPTAS Algorithm (ε=0.5) ---
+Best Value: 118.4000
+Execution Time: 0.0001 seconds
+Memory Usage: 864 bytes
+Relative Error: 0.0892
+
 --- FPTAS Algorithm (ε=0.1) ---
 Best Value: 128.7600
-Execution Time: 0.0003 seconds
+Execution Time: 0.0002 seconds
 Memory Usage: 4584 bytes
 Relative Error: 0.0095
-
---- FPTAS Algorithm (ε=0.05) ---
-Best Value: 129.5000
-Execution Time: 0.0005 seconds
-Memory Usage: 9192 bytes
-Relative Error: 0.0038
-
---- FPTAS Algorithm (ε=0.01) ---
-Best Value: 129.8700
-Execution Time: 0.0023 seconds
-Memory Usage: 46032 bytes
-Relative Error: 0.0010
 
 --- Two Approx Algorithm ---
 Best Value: 130.0000
