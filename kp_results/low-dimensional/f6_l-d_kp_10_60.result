@@ -2,30 +2,30 @@ Instance: f6_l-d_kp_10_60
 
 --- Branch and Bound Algorithm ---
 Best Value: 52.0000
-Execution Time: 0.0018 seconds
-Memory Usage: 0.02547454833984375 bytes
+Execution Time: 0.0024 seconds
+Memory Usage: 1344 bytes
 Relative Error: 0.0000
 
 --- FPTAS Algorithm (ε=0.1) ---
 Best Value: 51.2000
-Execution Time: 0.0024 seconds
-Memory Usage: 0.005428314208984375 bytes
+Execution Time: 0.0013 seconds
+Memory Usage: 12384 bytes
 Relative Error: 0.0154
 
 --- FPTAS Algorithm (ε=0.05) ---
 Best Value: 51.6000
-Execution Time: 0.0092 seconds
-Memory Usage: 0.010379791259765625 bytes
+Execution Time: 0.0031 seconds
+Memory Usage: 24984 bytes
 Relative Error: 0.0077
 
 --- FPTAS Algorithm (ε=0.01) ---
 Best Value: 51.9200
-Execution Time: 0.0219 seconds
-Memory Usage: 0.0 bytes
+Execution Time: 0.0104 seconds
+Memory Usage: 125784 bytes
 Relative Error: 0.0015
 
 --- Two Approx Algorithm ---
 Best Value: 52.0000
 Execution Time: 0.0000 seconds
-Memory Usage: 0.04138946533203125 bytes
+Memory Usage: 72 bytes
 Relative Error: 0.0000

@@ -1,5 +1,4 @@
 import time
-import tracemalloc
 
 
 class FPTASAlgorithm:
@@ -16,7 +15,6 @@ class FPTASAlgorithm:
         self.timeout = False
 
     def execute(self):
-        tracemalloc.start()
         start_time = time.process_time()
 
         values = [item[1] for item in self.items]   # v
@@ -46,9 +44,9 @@ class FPTASAlgorithm:
         self.best_value = approx_value
 
         end_time = time.process_time()
-        self.execution_time = end_time - start_time
 
-        current, peak = tracemalloc.get_traced_memory()
-        self.memory_usage = peak / (1024 * 1024)  # em megabytes
-        tracemalloc.stop()
+        self.execution_time = end_time - start_time
+        dp_size = len(dp)
+        self.memory_usage = (dp_size * 24)
+
         return self

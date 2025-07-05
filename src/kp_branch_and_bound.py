@@ -1,17 +1,14 @@
 from dataclasses import dataclass, field
 import time
-import tracemalloc
-import heapq
+from queue import PriorityQueue
+import sys
 
 
 @dataclass(order=True)
 class Node:
-    priority: float
     level: int = field(compare=False)
     value: float = field(compare=False)
     weight: float = field(compare=False)
-    bound: float
-    s: list = field(compare=False, default_factory=list)
 
 class BranchAndBoundAlgorithm:
     def __init__(self, n, W, items):
@@ -26,71 +23,74 @@ class BranchAndBoundAlgorithm:
         self.relative_error = None
         self.timeout = False
 
+    def bound(self, node):
+        if node.weight >= self.W:
+            return 0
+
+        value_bound = node.value
+        j = node.level + 1
+        total_weight = node.weight
+
+        while j < self.n and total_weight + self.items[j][0] <= self.W:
+            total_weight += self.items[j][0]
+            value_bound += self.items[j][1]
+            j += 1
+
+        if j < self.n:
+            value_bound += int((self.W - total_weight) * self.items[j][2])
+
+        return value_bound
+
     def execute(self):
-        tracemalloc.start()
         start_time = time.process_time()
-        root = Node(
-            priority=0, 
-            level=0, 
-            value=0, 
-            weight=0, 
-            bound=self.W*self.items[0][2], 
-            s=[]
-        )
+        max_queue_size = 0
 
-        queue = []
-        heapq.heappush(queue, (root.priority, root.level, root))
+        best_value = 0
 
-        best = 0
+        priority_queue = PriorityQueue()
+        root = Node(-1, 0, 0)
+        priority_queue.put(root)
 
-        while queue:
-            _, _, node = heapq.heappop(queue)
+        while not priority_queue.empty():
+            node = priority_queue.get()
+
+            current_size = priority_queue.qsize()
+            if current_size > max_queue_size:
+                max_queue_size = current_size
+
             if node.level == self.n - 1:
                 if best < node.value:
                     best = node.value
-                    sol = node.s
                     continue
-            elif node.bound > best:
-                with_node = (
-                    node.value + self.items[node.level][1] + 
-                    (self.W - node.weight - self.items[node.level][0])* 
-                    self.items[node.level + 1][2]
-                )
+            
+            next_node = Node(
+                node.level + 1,
+                node.value + self.items[node.level + 1][1], 
+                node.weight + self.items[node.level + 1][0]
+            )
 
-                wout_node = (
-                    node.value + (self.W - node.weight)*self.items[node.level + 1][2]
-                )
+            if next_node.weight <= self.W and next_node.value > best_value:
+                best_value = next_node.value
 
-                if node.weight + self.items[node.level][0] <= self.W and with_node > best:
-                    next_node = Node(
-                        priority=-with_node,
-                        level=node.level + 1, 
-                        value=node.value + self.items[node.level][1], 
-                        weight=node.weight + self.items[node.level][0], 
-                        bound=with_node, 
-                        s=node.s + [node.level]
-                    )
-                    heapq.heappush(queue, (next_node.priority, next_node.level, next_node))
+            with_node = self.bound(next_node)
+            if with_node > best_value:
+                priority_queue.put(next_node)
 
-                if wout_node > best:
-                    next_node = Node(
-                        priority=-wout_node,
-                        level=node.level + 1,
-                        value=node.value,
-                        weight=node.weight,
-                        bound=wout_node,
-                        s=node.s
-                    )
-                    heapq.heappush(queue, (next_node.priority, next_node.level, next_node))
-        
-        self.best_value = best
-        self.solution = sol
+            next_node = Node(
+                node.level + 1, 
+                node.value, 
+                node.weight
+            )
+            wout_node = self.bound(next_node)
+            if wout_node > best_value:
+                priority_queue.put(next_node)
+
+
+        self.best_value = best_value
 
         end_time = time.process_time()
-        self.execution_time = end_time - start_time
 
-        current, peak = tracemalloc.get_traced_memory()
-        self.memory_usage = peak / (1024 * 1024)  # em megabytes
-        tracemalloc.stop()
+        self.execution_time = end_time - start_time
+        self.memory_usage = sys.getsizeof(node) * max_queue_size
 
         return self

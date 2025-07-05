@@ -2,30 +2,30 @@ Instance: f7_l-d_kp_7_50
 
 --- Branch and Bound Algorithm ---
 Best Value: 107.0000
-Execution Time: 0.0001 seconds
-Memory Usage: 0.00128936767578125 bytes
+Execution Time: 0.0006 seconds
+Memory Usage: 192 bytes
 Relative Error: 0.0000
 
 --- FPTAS Algorithm (ε=0.1) ---
 Best Value: 107.0000
-Execution Time: 0.0004 seconds
-Memory Usage: 0.0027923583984375 bytes
+Execution Time: 0.0003 seconds
+Memory Usage: 4536 bytes
 Relative Error: 0.0000
 
 --- FPTAS Algorithm (ε=0.05) ---
 Best Value: 107.0000
-Execution Time: 0.0010 seconds
-Memory Usage: 0.0032501220703125 bytes
+Execution Time: 0.0008 seconds
+Memory Usage: 9048 bytes
 Relative Error: 0.0000
 
 --- FPTAS Algorithm (ε=0.01) ---
 Best Value: 106.8000
-Execution Time: 0.0060 seconds
-Memory Usage: 0.0 bytes
+Execution Time: 0.0033 seconds
+Memory Usage: 44976 bytes
 Relative Error: 0.0019
 
 --- Two Approx Algorithm ---
 Best Value: 102.0000
 Execution Time: 0.0000 seconds
-Memory Usage: 0.015026092529296875 bytes
+Memory Usage: 72 bytes
 Relative Error: 0.0467

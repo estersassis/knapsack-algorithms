@@ -1,31 +1,31 @@
 Instance: f4_l-d_kp_4_11
 
 --- Branch and Bound Algorithm ---
-Best Value: 22.0000
-Execution Time: 0.0002 seconds
-Memory Usage: 0.00360870361328125 bytes
-Relative Error: 0.0435
+Best Value: 23.0000
+Execution Time: 0.0005 seconds
+Memory Usage: 192 bytes
+Relative Error: 0.0000
 
 --- FPTAS Algorithm (ε=0.1) ---
 Best Value: 22.4250
 Execution Time: 0.0002 seconds
-Memory Usage: 0.00240325927734375 bytes
+Memory Usage: 2976 bytes
 Relative Error: 0.0250
 
 --- FPTAS Algorithm (ε=0.05) ---
 Best Value: 22.7500
-Execution Time: 0.0002 seconds
-Memory Usage: 0.00213623046875 bytes
+Execution Time: 0.0003 seconds
+Memory Usage: 6000 bytes
 Relative Error: 0.0109
 
 --- FPTAS Algorithm (ε=0.01) ---
 Best Value: 22.9450
-Execution Time: 0.0031 seconds
-Memory Usage: 0.010028839111328125 bytes
+Execution Time: 0.0012 seconds
+Memory Usage: 30240 bytes
 Relative Error: 0.0024
 
 --- Two Approx Algorithm ---
 Best Value: 16.0000
 Execution Time: 0.0000 seconds
-Memory Usage: 0.00070953369140625 bytes
+Memory Usage: 72 bytes
 Relative Error: 0.3043

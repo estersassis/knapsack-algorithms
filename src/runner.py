@@ -1,6 +1,7 @@
 import os
 import shutil
 from src.kp import KnapsackProblem
+from concurrent.futures import ProcessPoolExecutor, as_completed
 
 
 class KnapsackProblemRunner:
@@ -36,8 +37,18 @@ class KnapsackProblemRunner:
             key=lambda x: int(os.path.splitext(x)[0].split("_")[-1])
         )
 
-        for file_name in files:
-            self.process_file(file_name)
+        with ProcessPoolExecutor() as executor:
+            futures = {
+                executor.submit(self.process_file, file_name): file_name
+                for file_name in files
+            }
+
+            for future in as_completed(futures):
+                file_name = futures[future]
+                try:
+                    future.result()
+                except Exception as e:
+                    print(f"Error on {file_name} in parallel: {e}")
         
     def move_back_processed_files(self):
         files = os.listdir(self.processed_folder)
