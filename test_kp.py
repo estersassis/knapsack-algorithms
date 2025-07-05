@@ -1,6 +1,6 @@
 import os
 import math
-from src.kp_branch_and_bound import BranchAndBoundAlgorithm
+from src.kp_two_approx import TwoApproxAlgorithm
 from src.kp import KnapsackProblem
 
 instances_dir = "kp_instances/low-dimensional"
@@ -21,7 +21,7 @@ for inst_file in instance_files:
         expected = float(f.readline().strip())
 
     # roda o branch-and-bound
-    alg = BranchAndBoundAlgorithm(
+    alg = TwoApproxAlgorithm(
         problem.n, problem.W, problem.items
     )
     alg.execute()

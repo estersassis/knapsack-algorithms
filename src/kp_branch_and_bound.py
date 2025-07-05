@@ -94,24 +94,3 @@ class BranchAndBoundAlgorithm:
         tracemalloc.stop()
 
         return self
-
-
-
-# import sys
-
-# if len(sys.argv) < 2:
-#     print("Uso: python seu_script.py arquivo")
-#     sys.exit(1)
-
-# filename = sys.argv[1]
-
-# n, wmax, items = read_knapsack_file(filename)
-
-# items.sort(key=lambda x: x[2], reverse=True)
-# print("Itens: ", items)
-
-
-# best, sol = bnb_knapsack(items, wmax, n)
-
-# print("Melhor valor:", best)
-# print("Itens escolhidos (índices):", sol)
