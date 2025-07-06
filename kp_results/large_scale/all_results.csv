@@ -1,0 +1,106 @@
+instance,algorithm,best_value,exec_time,memory_bytes,relative_error
+knapPI_3_1000_1000_1,Branch and Bound Algorithm,,,,
+knapPI_3_1000_1000_1,FPTAS Algorithm (ε=0.8),,,,
+knapPI_3_1000_1000_1,FPTAS Algorithm (ε=0.5),,,,
+knapPI_3_1000_1000_1,FPTAS Algorithm (ε=0.1),,,,
+knapPI_3_1000_1000_1,Two Approx Algorithm,14374.0,0.07,72.0,0.0011
+knapPI_2_10000_1000_1,Branch and Bound Algorithm,,,,
+knapPI_2_10000_1000_1,FPTAS Algorithm (ε=0.8),,,,
+knapPI_2_10000_1000_1,FPTAS Algorithm (ε=0.5),,,,
+knapPI_2_10000_1000_1,FPTAS Algorithm (ε=0.1),,,,
+knapPI_2_10000_1000_1,Two Approx Algorithm,90200.0,2.7851,72.0,0.0
+knapPI_2_200_1000_1,Branch and Bound Algorithm,1634.0,0.5465,6576.0,0.0
+knapPI_2_200_1000_1,FPTAS Algorithm (ε=0.8),1619.352,5.9581,574656.0,0.009
+knapPI_2_200_1000_1,FPTAS Algorithm (ε=0.5),1622.565,10.1984,920880.0,0.007
+knapPI_2_200_1000_1,FPTAS Algorithm (ε=0.1),1631.6685,34.3029,4613928.0,0.0014
+knapPI_2_200_1000_1,Two Approx Algorithm,1604.0,0.0001,72.0,0.0184
+knapPI_2_500_1000_1,Branch and Bound Algorithm,4566.0,46.5634,138384.0,0.0
+knapPI_2_500_1000_1,FPTAS Algorithm (ε=0.8),4543.4496,67.5745,3602040.0,0.0049
+knapPI_2_500_1000_1,FPTAS Algorithm (ε=0.5),4551.612,89.6811,5766288.0,0.0032
+knapPI_2_500_1000_1,FPTAS Algorithm (ε=0.1),4562.7816,200.1981,28856112.0,0.0007
+knapPI_2_500_1000_1,Two Approx Algorithm,4552.0,0.0003,72.0,0.0031
+knapPI_1_2000_1000_1,Branch and Bound Algorithm,110625.0,415.3066,1187568.0,0.0
+knapPI_1_2000_1000_1,FPTAS Algorithm (ε=0.8),,,,
+knapPI_1_2000_1000_1,FPTAS Algorithm (ε=0.5),,,,
+knapPI_1_2000_1000_1,FPTAS Algorithm (ε=0.1),,,,
+knapPI_1_2000_1000_1,Two Approx Algorithm,110547.0,0.2674,72.0,0.0007
+knapPI_2_5000_1000_1,Branch and Bound Algorithm,44356.0,1481.2707,3473424.0,0.0
+knapPI_2_5000_1000_1,FPTAS Algorithm (ε=0.8),,,,
+knapPI_2_5000_1000_1,FPTAS Algorithm (ε=0.5),,,,
+knapPI_2_5000_1000_1,FPTAS Algorithm (ε=0.1),,,,
+knapPI_2_5000_1000_1,Two Approx Algorithm,44351.0,0.9593,72.0,0.0001
+knapPI_3_2000_1000_1,Branch and Bound Algorithm,,,,
+knapPI_3_2000_1000_1,FPTAS Algorithm (ε=0.8),,,,
+knapPI_3_2000_1000_1,FPTAS Algorithm (ε=0.5),,,,
+knapPI_3_2000_1000_1,FPTAS Algorithm (ε=0.1),,,,
+knapPI_3_2000_1000_1,Two Approx Algorithm,28827.0,0.1516,72.0,0.0032
+knapPI_3_5000_1000_1,Branch and Bound Algorithm,,,,
+knapPI_3_5000_1000_1,FPTAS Algorithm (ε=0.8),,,,
+knapPI_3_5000_1000_1,FPTAS Algorithm (ε=0.5),,,,
+knapPI_3_5000_1000_1,FPTAS Algorithm (ε=0.1),,,,
+knapPI_3_5000_1000_1,Two Approx Algorithm,72446.0,1.4471,72.0,0.0008
+knapPI_1_200_1000_1,Branch and Bound Algorithm,11238.0,0.5985,6432.0,0.0
+knapPI_1_200_1000_1,FPTAS Algorithm (ε=0.8),11206.28,3.587,597264.0,0.0028
+knapPI_1_200_1000_1,FPTAS Algorithm (ε=0.5),11216.25,5.0264,956688.0,0.0019
+knapPI_1_200_1000_1,FPTAS Algorithm (ε=0.1),11233.6975,10.6281,4793736.0,0.0004
+knapPI_1_200_1000_1,Two Approx Algorithm,11227.0,0.0003,72.0,0.001
+knapPI_1_500_1000_1,Branch and Bound Algorithm,28857.0,14.2159,101520.0,0.0
+knapPI_1_500_1000_1,FPTAS Algorithm (ε=0.8),28828.6272,50.512,3707664.0,0.001
+knapPI_1_500_1000_1,FPTAS Algorithm (ε=0.5),28832.22,67.341,5935656.0,0.0009
+knapPI_1_500_1000_1,FPTAS Algorithm (ε=0.1),28852.5792,157.1888,29702016.0,0.0002
+knapPI_1_500_1000_1,Two Approx Algorithm,28834.0,0.0001,72.0,0.0008
+knapPI_3_200_1000_1,Branch and Bound Algorithm,2697.0,183.2889,44256.0,0.0
+knapPI_3_200_1000_1,FPTAS Algorithm (ε=0.8),2667.904,5.2284,656160.0,0.0108
+knapPI_3_200_1000_1,FPTAS Algorithm (ε=0.5),2676.68,7.1143,1051416.0,0.0075
+knapPI_3_200_1000_1,FPTAS Algorithm (ε=0.1),2692.5865,24.4946,5266704.0,0.0016
+knapPI_3_200_1000_1,Two Approx Algorithm,2649.0,0.0002,72.0,0.0178
+knapPI_3_10000_1000_1,Branch and Bound Algorithm,,,,
+knapPI_3_10000_1000_1,FPTAS Algorithm (ε=0.8),,,,
+knapPI_3_10000_1000_1,FPTAS Algorithm (ε=0.5),,,,
+knapPI_3_10000_1000_1,FPTAS Algorithm (ε=0.1),,,,
+knapPI_3_10000_1000_1,Two Approx Algorithm,146888.0,3.0461,72.0,0.0002
+knapPI_3_500_1000_1,Branch and Bound Algorithm,,,,
+knapPI_3_500_1000_1,FPTAS Algorithm (ε=0.8),7076.3904,1365.5708,4151232.0,0.0057
+knapPI_3_500_1000_1,FPTAS Algorithm (ε=0.5),,,,
+knapPI_3_500_1000_1,FPTAS Algorithm (ε=0.1),,,,
+knapPI_3_500_1000_1,Two Approx Algorithm,7098.0,0.0168,72.0,0.0027
+knapPI_2_100_1000_1,Branch and Bound Algorithm,1514.0,0.1721,2592.0,0.0
+knapPI_2_100_1000_1,FPTAS Algorithm (ε=0.8),1472.64,0.3922,146232.0,0.0273
+knapPI_2_100_1000_1,FPTAS Algorithm (ε=0.5),1492.4,0.4878,234648.0,0.0143
+knapPI_2_100_1000_1,FPTAS Algorithm (ε=0.1),1506.96,1.0108,1178352.0,0.0046
+knapPI_2_100_1000_1,Two Approx Algorithm,1487.0,0.0001,72.0,0.0178
+knapPI_1_1000_1000_1,Branch and Bound Algorithm,54503.0,126.5338,462720.0,0.0
+knapPI_1_1000_1000_1,FPTAS Algorithm (ε=0.8),54468.4448,302.0068,14612376.0,0.0006
+knapPI_1_1000_1000_1,FPTAS Algorithm (ε=0.5),54479.822,408.3367,23386872.0,0.0004
+knapPI_1_1000_1000_1,FPTAS Algorithm (ε=0.1),54499.0834,920.0319,116982960.0,0.0001
+knapPI_1_1000_1000_1,Two Approx Algorithm,54386.0,0.0002,72.0,0.0021
+knapPI_1_10000_1000_1,Branch and Bound Algorithm,,,,
+knapPI_1_10000_1000_1,FPTAS Algorithm (ε=0.8),,,,
+knapPI_1_10000_1000_1,FPTAS Algorithm (ε=0.5),,,,
+knapPI_1_10000_1000_1,FPTAS Algorithm (ε=0.1),,,,
+knapPI_1_10000_1000_1,Two Approx Algorithm,563605.0,2.7873,72.0,0.0001
+knapPI_3_100_1000_1,Branch and Bound Algorithm,2397.0,8.1982,14784.0,0.0
+knapPI_3_100_1000_1,FPTAS Algorithm (ε=0.8),2351.968,0.6971,168312.0,0.0188
+knapPI_3_100_1000_1,FPTAS Algorithm (ε=0.5),2353.065,0.623,270000.0,0.0183
+knapPI_3_100_1000_1,FPTAS Algorithm (ε=0.1),2387.072,2.8097,1354848.0,0.0041
+knapPI_3_100_1000_1,Two Approx Algorithm,2375.0,0.0001,72.0,0.0092
+knapPI_1_5000_1000_1,Branch and Bound Algorithm,,,,
+knapPI_1_5000_1000_1,FPTAS Algorithm (ε=0.8),,,,
+knapPI_1_5000_1000_1,FPTAS Algorithm (ε=0.5),,,,
+knapPI_1_5000_1000_1,FPTAS Algorithm (ε=0.1),,,,
+knapPI_1_5000_1000_1,Two Approx Algorithm,276379.0,1.0757,72.0,0.0003
+knapPI_2_2000_1000_1,Branch and Bound Algorithm,18051.0,727.5498,1247568.0,0.0
+knapPI_2_2000_1000_1,FPTAS Algorithm (ε=0.8),18023.7564,2827.4479,55805160.0,0.0015
+knapPI_2_2000_1000_1,FPTAS Algorithm (ε=0.5),18031.5025,3850.9851,89301960.0,0.0011
+knapPI_2_2000_1000_1,FPTAS Algorithm (ε=0.1),,,,
+knapPI_2_2000_1000_1,Two Approx Algorithm,18038.0,0.0009,72.0,0.0007
+knapPI_2_1000_1000_1,Branch and Bound Algorithm,9052.0,190.0911,570192.0,0.0
+knapPI_2_1000_1000_1,FPTAS Algorithm (ε=0.8),9024.752,371.2476,13955712.0,0.003
+knapPI_2_1000_1000_1,FPTAS Algorithm (ε=0.5),9035.1165,492.1695,22335504.0,0.0019
+knapPI_2_1000_1000_1,FPTAS Algorithm (ε=0.1),,,,
+knapPI_2_1000_1000_1,Two Approx Algorithm,9046.0,0.0004,72.0,0.0007
+knapPI_1_100_1000_1,Branch and Bound Algorithm,9147.0,0.1434,4752.0,0.0
+knapPI_1_100_1000_1,FPTAS Algorithm (ε=0.8),9100.616,0.8528,149520.0,0.0051
+knapPI_1_100_1000_1,FPTAS Algorithm (ε=0.5),9112.58,2.2366,239760.0,0.0038
+knapPI_1_100_1000_1,FPTAS Algorithm (ε=0.1),9141.493,4.6154,1203600.0,0.0006
+knapPI_1_100_1000_1,Two Approx Algorithm,8817.0,0.0002,72.0,0.0361
