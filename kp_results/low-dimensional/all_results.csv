@@ -1,0 +1,46 @@
+instance,algorithm,best_value,exec_time,memory_bytes,relative_error
+f2_l-d_kp_20_878,Branch and Bound Algorithm,1024.0,0.0117,2928.0,0.0
+f2_l-d_kp_20_878,FPTAS Algorithm (ε=0.8),990.08,0.0027,6912.0,0.0331
+f2_l-d_kp_20_878,FPTAS Algorithm (ε=0.5),1001.0,0.005,11184.0,0.0225
+f2_l-d_kp_20_878,FPTAS Algorithm (ε=0.1),1019.655,0.0177,56976.0,0.0042
+f2_l-d_kp_20_878,Two Approx Algorithm,1018.0,0.0,72.0,0.0059
+f4_l-d_kp_4_11,Branch and Bound Algorithm,23.0,0.0004,192.0,0.0
+f4_l-d_kp_4_11,FPTAS Algorithm (ε=0.8),18.2,0.0001,336.0,0.2087
+f4_l-d_kp_4_11,FPTAS Algorithm (ε=0.5),22.75,0.0001,600.0,0.0109
+f4_l-d_kp_4_11,FPTAS Algorithm (ε=0.1),22.425,0.0001,2976.0,0.025
+f4_l-d_kp_4_11,Two Approx Algorithm,16.0,0.0,72.0,0.3043
+f7_l-d_kp_7_50,Branch and Bound Algorithm,107.0,0.0004,192.0,0.0
+f7_l-d_kp_7_50,FPTAS Algorithm (ε=0.8),96.0,0.0001,480.0,0.1028
+f7_l-d_kp_7_50,FPTAS Algorithm (ε=0.5),105.0,0.0001,888.0,0.0187
+f7_l-d_kp_7_50,FPTAS Algorithm (ε=0.1),107.0,0.0002,4536.0,0.0
+f7_l-d_kp_7_50,Two Approx Algorithm,102.0,0.0,72.0,0.0467
+f3_l-d_kp_4_20,Branch and Bound Algorithm,35.0,0.0001,144.0,0.0
+f3_l-d_kp_4_20,FPTAS Algorithm (ε=0.8),33.0,0.0001,384.0,0.0571
+f3_l-d_kp_4_20,FPTAS Algorithm (ε=0.5),31.875,0.0001,576.0,0.0893
+f3_l-d_kp_4_20,FPTAS Algorithm (ε=0.1),34.875,0.0002,3072.0,0.0036
+f3_l-d_kp_4_20,Two Approx Algorithm,35.0,0.0,72.0,0.0
+f10_l-d_kp_20_879,Branch and Bound Algorithm,1025.0,0.0197,2928.0,0.0
+f10_l-d_kp_20_879,FPTAS Algorithm (ε=0.8),993.72,0.0025,6936.0,0.0305
+f10_l-d_kp_20_879,FPTAS Algorithm (ε=0.5),1003.275,0.0052,11208.0,0.0212
+f10_l-d_kp_20_879,FPTAS Algorithm (ε=0.1),1020.565,0.0146,57024.0,0.0043
+f10_l-d_kp_20_879,Two Approx Algorithm,1019.0,0.0001,72.0,0.0059
+f6_l-d_kp_10_60,Branch and Bound Algorithm,52.0,0.0024,1344.0,0.0
+f6_l-d_kp_10_60,FPTAS Algorithm (ε=0.8),49.6,0.0002,1488.0,0.0462
+f6_l-d_kp_10_60,FPTAS Algorithm (ε=0.5),52.0,0.0003,2544.0,0.0
+f6_l-d_kp_10_60,FPTAS Algorithm (ε=0.1),51.2,0.0011,12384.0,0.0154
+f6_l-d_kp_10_60,Two Approx Algorithm,52.0,0.0,72.0,0.0
+f1_l-d_kp_10_269,Branch and Bound Algorithm,295.0,0.0009,576.0,0.0
+f1_l-d_kp_10_269,FPTAS Algorithm (ε=0.8),278.4,0.0003,1320.0,0.0563
+f1_l-d_kp_10_269,FPTAS Algorithm (ε=0.5),287.1,0.0003,2184.0,0.0268
+f1_l-d_kp_10_269,FPTAS Algorithm (ε=0.1),292.32,0.0011,11280.0,0.0091
+f1_l-d_kp_10_269,Two Approx Algorithm,294.0,0.0,72.0,0.0034
+f9_l-d_kp_5_80,Branch and Bound Algorithm,130.0,0.0002,144.0,0.0
+f9_l-d_kp_5_80,FPTAS Algorithm (ε=0.8),124.32,0.0001,576.0,0.0437
+f9_l-d_kp_5_80,FPTAS Algorithm (ε=0.5),118.4,0.0001,864.0,0.0892
+f9_l-d_kp_5_80,FPTAS Algorithm (ε=0.1),128.76,0.0002,4584.0,0.0095
+f9_l-d_kp_5_80,Two Approx Algorithm,130.0,0.0,72.0,0.0
+f8_l-d_kp_23_10000,Branch and Bound Algorithm,9767.0,25.6479,4464.0,0.0
+f8_l-d_kp_23_10000,FPTAS Algorithm (ε=0.8),9554.087,0.0032,13392.0,0.0218
+f8_l-d_kp_23_10000,FPTAS Algorithm (ε=0.5),9618.0652,0.0052,21408.0,0.0152
+f8_l-d_kp_23_10000,FPTAS Algorithm (ε=0.1),9741.7565,0.0496,108384.0,0.0026
+f8_l-d_kp_23_10000,Two Approx Algorithm,9751.0,0.0001,72.0,0.0016
