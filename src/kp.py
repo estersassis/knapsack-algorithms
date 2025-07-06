@@ -1,16 +1,17 @@
 import math
 import time
-import threading
+import asyncio
 from src.kp_branch_and_bound import BranchAndBoundAlgorithm
 from src.kp_fptas import FPTASAlgorithm
 from src.kp_two_approx import TwoApproxAlgorithm
+from concurrent.futures import ProcessPoolExecutor, TimeoutError
 
 
 class KnapsackProblem:
     def __init__(self, file_path: str, optimal_file):
         self.file_path = file_path
         self.optimal_file = optimal_file
-        self.timeout = 300.0
+        self.timeout = 1800
 
         self.n = None
         self.W = None
@@ -37,87 +38,69 @@ class KnapsackProblem:
         
         self.items.sort(key=lambda x: x[2], reverse=True)
     
-    def run_algorithms(self):
-        self.branch_and_bound_algorithm = BranchAndBoundAlgorithm(
-            self.n, self.W, self.items
-        )
+    from concurrent.futures import ProcessPoolExecutor, TimeoutError
+
+    async def run_algorithms(self):
+        async def execute_with_timeout(algorithm_instance, name):
+            try:
+                print(f"Starting {name}...")
+                start_time = time.perf_counter()
+                await asyncio.wait_for(algorithm_instance.execute(), timeout=self.timeout)
+                print(f"{name} completed in {time.perf_counter() - start_time:.2f} seconds")
+            except asyncio.TimeoutError:
+                print(f"{name} timeout after {self.timeout} seconds")
+                algorithm_instance.timeout = True
+
+        self.branch_and_bound_algorithm = BranchAndBoundAlgorithm(self.n, self.W, self.items)
         epsilons = [0.8, 0.5, 0.1]
         self.fptas_algorithms = {
             eps: FPTASAlgorithm(self.n, self.W, self.items, epsilon=eps)
             for eps in epsilons
         }
-        self.two_approx_algorithm = TwoApproxAlgorithm(
-            self.n, self.W, self.items
+        self.two_approx_algorithm = TwoApproxAlgorithm(self.n, self.W, self.items)
+
+        print("Running algorithms...")
+
+        await asyncio.gather(
+            execute_with_timeout(self.branch_and_bound_algorithm, "BranchAndBound"),
+            execute_with_timeout(self.fptas_algorithms[0.8], "FPTAS ε=0.8"),
+            execute_with_timeout(self.fptas_algorithms[0.5], "FPTAS ε=0.5"),
+            execute_with_timeout(self.fptas_algorithms[0.1], "FPTAS ε=0.1"),
+            execute_with_timeout(self.two_approx_algorithm, "TwoApprox"),
         )
-
-        threads = []
-
-        def bb_target():
-            print("Starting BranchAndBoundAlgorithm...")
-            self.branch_and_bound_algorithm.execute()
-            print("BranchAndBoundAlgorithm finished.")
-
-        threads.append(threading.Thread(target=bb_target))
-
-        # fptas
-        for eps, algo in self.fptas_algorithms.items():
-            def fptas_target(algo=algo, eps=eps):
-                print(f"Starting FPTASAlgorithm ε={eps}...")
-                algo.execute()
-                print(f"FPTASAlgorithm ε={eps} finished.")
-            threads.append(threading.Thread(target=fptas_target))
-        
-        def tp_target():
-            print("Starting TwoApproxAlgorithm...")
-            self.two_approx_algorithm.execute()
-            print("TwoApproxAlgorithm finished.")
-
-        threads.append(threading.Thread(target=tp_target))
-
-        # start
-        for t in threads:
-            t.start()
-
-        # join
-        for t in threads:
-            t.join(timeout=self.timeout)
-
-        # timeout check
-        if threads[0].is_alive():
-            print(f"BranchAndBoundAlgorithm timed out after {self.timeout} seconds")
-            self.branch_and_bound_algorithm.timeout = True
-            threads[0].join()
-
-        for i, eps in enumerate(epsilons, start=1):
-            if threads[i].is_alive():
-                print(f"FPTASAlgorithm ε={eps} timed out after {self.timeout} seconds")
-                self.fptas_algorithms[eps].timeout = True
-                threads[i].join()
-        
-        if threads[0].is_alive():
-            print(f"TwoApproxAlgorithm timed out after {self.timeout} seconds")
-            self.branch_and_bound_algorithm.timeout = True
-            threads[0].join()
 
     def calculate_relative_error(self):
         with open(self.optimal_file, 'r') as file:
             optimal_value = float(file.readline().strip())
 
+        # branch and bound
         if self.branch_and_bound_algorithm and not self.branch_and_bound_algorithm.timeout:
-            self.branch_and_bound_algorithm.relative_error = (
-                (optimal_value - self.branch_and_bound_algorithm.best_value) / optimal_value
-            )
+            bv = self.branch_and_bound_algorithm.best_value
+            if bv is not None:
+                self.branch_and_bound_algorithm.relative_error = (
+                    (optimal_value - bv) / optimal_value
+                )
+            else:
+                self.branch_and_bound_algorithm.relative_error = None
 
+        # fptas
         for eps, algo in self.fptas_algorithms.items():
             if algo and not algo.timeout:
-                algo.relative_error = (
-                    (optimal_value - algo.best_value) / optimal_value
-                )
-        
+                bv = algo.best_value
+                if bv is not None:
+                    algo.relative_error = (optimal_value - bv) / optimal_value
+                else:
+                    algo.relative_error = None
+
+        # twoapprox
         if self.two_approx_algorithm and not self.two_approx_algorithm.timeout:
-            self.two_approx_algorithm.relative_error = (
-                (optimal_value - self.two_approx_algorithm.best_value) / optimal_value
-            )
+            bv = self.two_approx_algorithm.best_value
+            if bv is not None:
+                self.two_approx_algorithm.relative_error = (
+                    (optimal_value - bv) / optimal_value
+                )
+            else:
+                self.two_approx_algorithm.relative_error = None
 
     def generate_result_file(self, file_name, results_folder):
         self.calculate_relative_error()

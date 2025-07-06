@@ -1,8 +1,6 @@
 import os
 import shutil
 from src.kp import KnapsackProblem
-from concurrent.futures import ProcessPoolExecutor, as_completed
-
 
 class KnapsackProblemRunner:
     def __init__(self, folder_to_process="kp", processed_folder="processed", results_folder="results", optimal_folder="optimal"):
@@ -15,7 +13,7 @@ class KnapsackProblemRunner:
         os.makedirs(self.processed_folder, exist_ok=True)
         os.makedirs(self.results_folder, exist_ok=True)
     
-    def process_file(self, file_name):
+    async def process_file(self, file_name):
         file_path = os.path.join(self.folder_to_process, file_name)
         print(f"Processing {file_path}...")
 
@@ -23,7 +21,7 @@ class KnapsackProblemRunner:
 
         try:
             problem = KnapsackProblem(file_path, optimal_file_path)
-            problem.run_algorithms()
+            await problem.run_algorithms()
             problem.generate_result_file(file_name, self.results_folder)
             shutil.move(file_path, os.path.join(self.processed_folder, file_name))
             print(f"Finished processing {file_name}.")
@@ -31,25 +29,18 @@ class KnapsackProblemRunner:
             shutil.move(file_path, os.path.join(self.processed_folder, file_name))
             print(f"Error processing {file_name}: {e}. Skipping to next file.")
 
-    def run_for_all_files(self):
-        files = sorted(
-            os.listdir(self.folder_to_process),
-            key=lambda x: int(os.path.splitext(x)[0].split("_")[-1])
-        )
+    async def run_for_all_files(self, specific_file=None):
+        if specific_file:
+            files = [specific_file]
+        else:
+            files = sorted(
+                os.listdir(self.folder_to_process),
+                key=lambda x: int(os.path.splitext(x)[0].split("_")[-1])
+            )
 
-        with ProcessPoolExecutor(max_workers=3) as executor:
-            futures = {
-                executor.submit(self.process_file, file_name): file_name
-                for file_name in files
-            }
-
-            for future in as_completed(futures):
-                file_name = futures[future]
-                try:
-                    future.result()
-                except Exception as e:
-                    print(f"Error on {file_name} in parallel: {e}")
-        
+        for file in files:
+            await self.process_file(file)
+                    
     def move_back_processed_files(self):
         files = os.listdir(self.processed_folder)
         for file_name in files:

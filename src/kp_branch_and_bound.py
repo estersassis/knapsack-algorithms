@@ -2,6 +2,7 @@ from dataclasses import dataclass, field
 import time
 from queue import PriorityQueue
 import sys
+import asyncio
 
 
 @dataclass(order=True)
@@ -41,7 +42,7 @@ class BranchAndBoundAlgorithm:
 
         return value_bound
 
-    def execute(self):
+    async def execute(self):
         start_time = time.process_time()
         max_queue_size = 0
 
@@ -84,6 +85,8 @@ class BranchAndBoundAlgorithm:
             wout_node = self.bound(next_node)
             if wout_node > best_value:
                 priority_queue.put(next_node)
+            
+            await asyncio.sleep(0)
 
 
         self.best_value = best_value

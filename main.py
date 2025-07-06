@@ -1,5 +1,6 @@
 import argparse
 from src.runner import KnapsackProblemRunner
+import asyncio
 
 
 def parse_args():
@@ -24,6 +25,11 @@ def parse_args():
         "--move-back", action="store_true",
         help="Move all files from processed folder back to process folder after processing"
     )
+    parser.add_argument(
+        "--file", type=str,
+        help="Process a single file instead of all"
+    )
+
     return parser.parse_args()
 
 if __name__ == "__main__":
@@ -36,7 +42,7 @@ if __name__ == "__main__":
         optimal_folder=args.optimal_folder
     )
 
-    runner.run_for_all_files()
+    asyncio.run(runner.run_for_all_files(specific_file=args.file))
 
     if args.move_back:
         runner.move_back_processed_files()

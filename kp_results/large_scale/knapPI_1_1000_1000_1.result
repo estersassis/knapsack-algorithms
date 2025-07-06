@@ -1,0 +1,31 @@
+Instance: knapPI_1_1000_1000_1
+
+--- Branch and Bound Algorithm ---
+Best Value: 54503.0000
+Execution Time: 126.5338 seconds
+Memory Usage: 462720 bytes
+Relative Error: 0.0000
+
+--- FPTAS Algorithm (ε=0.8) ---
+Best Value: 54468.4448
+Execution Time: 302.0068 seconds
+Memory Usage: 14612376 bytes
+Relative Error: 0.0006
+
+--- FPTAS Algorithm (ε=0.5) ---
+Best Value: 54479.8220
+Execution Time: 408.3367 seconds
+Memory Usage: 23386872 bytes
+Relative Error: 0.0004
+
+--- FPTAS Algorithm (ε=0.1) ---
+Best Value: 54499.0834
+Execution Time: 920.0319 seconds
+Memory Usage: 116982960 bytes
+Relative Error: 0.0001
+
+--- Two Approx Algorithm ---
+Best Value: 54386.0000
+Execution Time: 0.0002 seconds
+Memory Usage: 72 bytes
+Relative Error: 0.0021

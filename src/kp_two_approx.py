@@ -1,5 +1,5 @@
 import time
-import tracemalloc
+import asyncio
 import resource
 
 
@@ -15,7 +15,7 @@ class TwoApproxAlgorithm:
         self.relative_error = None
         self.timeout = False
 
-    def execute(self):
+    async def execute(self):
         start_time = time.process_time()
 
         total_value = 0
@@ -25,6 +25,7 @@ class TwoApproxAlgorithm:
             if total_weight + w <= self.W:
                 total_weight += w
                 total_value += v
+            await asyncio.sleep(0)
 
         max_single_value = max(
             (v for w, v, _ in self.items if w <= self.W),

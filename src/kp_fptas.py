@@ -1,4 +1,5 @@
 import time
+import asyncio
 
 
 class FPTASAlgorithm:
@@ -14,7 +15,7 @@ class FPTASAlgorithm:
         self.relative_error = None
         self.timeout = False
 
-    def execute(self):
+    async def execute(self):
         start_time = time.process_time()
 
         values = [item[1] for item in self.items]   # v
@@ -34,11 +35,14 @@ class FPTASAlgorithm:
             for v in range(max_scaled_value, scaled_values[i]-1, -1):
                 if dp[v - scaled_values[i]] + weights[i] <= self.W:
                     dp[v] = min(dp[v], dp[v - scaled_values[i]] + weights[i])
+                await asyncio.sleep(0)
+            await asyncio.sleep(0)
         
         for v in range(max_scaled_value, -1, -1):
             if dp[v] <= self.W:
                 best_scaled_value = v
                 break
+            await asyncio.sleep(0)
         
         approx_value = best_scaled_value * K
         self.best_value = approx_value
